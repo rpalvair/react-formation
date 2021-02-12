@@ -24,11 +24,12 @@ const famille = {
 class App extends Component {
   state = {
     famille,
+    number: 2,
   }
 
-  handleClick = (count) => {
+  handleClick = (number) => {
     const famille = { ...this.state.famille }
-    famille.membre1.age += count
+    famille.membre1.age += number
     this.setState({
       famille,
     })
@@ -36,7 +37,7 @@ class App extends Component {
 
   render() {
     const { titre } = this.props
-    const { famille } = this.state
+    const { famille, number } = this.state
     return (
       <div className="App">
         <h1>{titre}</h1>
@@ -46,7 +47,10 @@ class App extends Component {
         <Membre age={famille.membre4.age} nom={famille.membre4.nom}>
           Je suis la plus grande
         </Membre>
-        <Button vieillir={() => this.handleClick(2)}></Button>
+        <Button
+          number={number}
+          vieillir={() => this.handleClick(number)}
+        ></Button>
       </div>
     )
   }
