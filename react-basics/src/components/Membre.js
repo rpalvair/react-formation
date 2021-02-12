@@ -1,7 +1,7 @@
 import React from "react"
 
-const Membre = () => {
-  const name = "Ruddy"
+const Membre = (props) => {
+  const name = props.nom
 
   return <h2>Membre {name}</h2>
 }
