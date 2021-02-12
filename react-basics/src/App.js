@@ -7,7 +7,7 @@ class App extends Component {
     const { titre } = this.props
     return (
       <Fragment>
-        <div class="App">
+        <div className="App">
           <h1>{titre}</h1>
         </div>
         <h2>Second titre</h2>
