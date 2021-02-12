@@ -27,16 +27,17 @@ class App extends Component {
 
   render() {
     const { titre } = this.props
+    const { famille } = this.state
     return (
       <Fragment>
         <div className="App">
           <h1>{titre}</h1>
         </div>
         <h2>Second titre</h2>
-        <Membre nom="Ruddy" />
-        <Membre nom="Andy" />
-        <Membre nom="Willy" />
-        <Membre nom="Jessie">Je suis la plus grande</Membre>
+        <Membre nom={famille.membre1.nom} />
+        <Membre nom={famille.membre2.nom} />
+        <Membre nom={famille.membre3.nom} />
+        <Membre nom={famille.membre4.nom}>Je suis la plus grande</Membre>
       </Fragment>
     )
   }
