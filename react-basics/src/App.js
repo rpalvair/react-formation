@@ -9,7 +9,7 @@ class App extends Component {
         <div class="App">
           <h1>React App</h1>
         </div>
-        <h2>Second title</h2>
+        <h2>Second titre</h2>
         <Membre />
       </Fragment>
     )
