@@ -4,7 +4,7 @@ const Membre = ({ nom, children }) => {
   return (
     <Fragment>
       <h2>Membre {nom.toUpperCase()}</h2>
-      <p>{children}</p>
+      {children ? <p>{children}</p> : <Fragment />}
     </Fragment>
   )
 }
