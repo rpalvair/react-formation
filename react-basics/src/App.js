@@ -7,13 +7,13 @@ class App extends Component {
     return (
       <Fragment>
         <div class="App">
-          <h1>React App</h1>
+          <h1>{this.props.titre}</h1>
         </div>
         <h2>Second titre</h2>
-        <Membre nom="Ruddy"/>
-        <Membre nom="Andy"/>
-        <Membre nom="Willy"/>
-        <Membre nom="Jessie"/>
+        <Membre nom="Ruddy" />
+        <Membre nom="Andy" />
+        <Membre nom="Willy" />
+        <Membre nom="Jessie" />
       </Fragment>
     )
   }
