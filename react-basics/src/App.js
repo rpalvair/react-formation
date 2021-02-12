@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import "./App.css"
+import Button from "./components/Button"
 import Membre from "./components/Membre"
 
 const famille = {
@@ -45,7 +46,7 @@ class App extends Component {
         <Membre age={famille.membre4.age} nom={famille.membre4.nom}>
           Je suis la plus grande
         </Membre>
-        <button onClick={this.handleClick}>Vieillir</button>
+        <Button vieillir={this.handleClick}></Button>
       </div>
     )
   }
