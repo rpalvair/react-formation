@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react"
 import "./App.css"
+import Membre from "./components/Membre"
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
           <h1>React App</h1>
         </div>
         <h2>Second title</h2>
+        <Membre />
       </Fragment>
     )
   }
