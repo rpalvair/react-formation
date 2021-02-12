@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react"
+import React, { Component } from "react"
 import "./App.css"
 import Membre from "./components/Membre"
 
@@ -29,16 +29,13 @@ class App extends Component {
     const { titre } = this.props
     const { famille } = this.state
     return (
-      <Fragment>
-        <div className="App">
-          <h1>{titre}</h1>
-        </div>
-        <h2>Second titre</h2>
+      <div className="App">
+        <h1>{titre}</h1>
         <Membre nom={famille.membre1.nom} />
         <Membre nom={famille.membre2.nom} />
         <Membre nom={famille.membre3.nom} />
         <Membre nom={famille.membre4.nom}>Je suis la plus grande</Membre>
-      </Fragment>
+      </div>
     )
   }
 }
