@@ -14,7 +14,9 @@ class App extends Component {
         <Membre nom="Ruddy" />
         <Membre nom="Andy" />
         <Membre nom="Willy" />
-        <Membre nom="Jessie" />
+        <Membre nom="Jessie" >
+          Je suis la plus grande
+        </Membre>
       </Fragment>
     )
   }
