@@ -1,9 +1,7 @@
 import React from "react"
 
-const Membre = (props) => {
-  const name = props.nom
-
-  return <h2>Membre {name}</h2>
+const Membre = ({ nom }) => {
+  return <h2>Membre {nom}</h2>
 }
 
 export default Membre
