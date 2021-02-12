@@ -35,10 +35,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>{titre}</h1>
-        <Membre nom={famille.membre1.nom} />
-        <Membre nom={famille.membre2.nom} />
-        <Membre nom={famille.membre3.nom} />
-        <Membre nom={famille.membre4.nom}>Je suis la plus grande</Membre>
+        <Membre age={famille.membre1.age} nom={famille.membre1.nom} />
+        <Membre age={famille.membre2.age} nom={famille.membre2.nom} />
+        <Membre age={famille.membre3.age} nom={famille.membre3.nom} />
+        <Membre age={famille.membre4.age} nom={famille.membre4.nom}>Je suis la plus grande</Membre>
         <button onClick={this.handleClick}>Vieillir</button>
       </div>
     )
