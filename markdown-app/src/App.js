@@ -15,7 +15,9 @@ class App extends Component {
   }
 
   renderText = (text) => {
-    return marked(text, { sanitize: true })
+    return {
+      __html: marked(text, { sanitize: true }),
+    }
   }
 
   render() {
@@ -33,9 +35,7 @@ class App extends Component {
           </div>
           <div className="col-sm-6">
             <div
-              dangerouslySetInnerHTML={{
-                __html: this.renderText(this.state.text),
-              }}
+              dangerouslySetInnerHTML={this.renderText(this.state.text)}
             ></div>
           </div>
         </div>
