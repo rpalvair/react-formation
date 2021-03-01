@@ -9,9 +9,10 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    const text = localStorage.getItem("text")
     this.setState({
-      text
+      text: localStorage.getItem("text")
+        ? localStorage.getItem("text")
+        : sampleText,
     })
   }
 
