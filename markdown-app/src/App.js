@@ -9,7 +9,10 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    console.log("Je suis monté")
+    const text = localStorage.getItem("text")
+    this.setState({
+      text
+    })
   }
 
   componentDidUpdate = () => {
