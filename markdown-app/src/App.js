@@ -8,6 +8,15 @@ class App extends Component {
     text: sampleText,
   }
 
+  componentDidMount = () => {
+    console.log("Je suis monté")
+  }
+
+  componentDidUpdate = () => {
+    const { text } = this.state
+    localStorage.setItem("text", text)
+  }
+
   handleChange = (event) => {
     this.setState({
       text: event.target.value,
