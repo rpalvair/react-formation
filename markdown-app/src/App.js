@@ -1,6 +1,7 @@
 import { Component } from "react"
 import "./App.css"
 import { sampleText } from "./sampleText"
+import marked from "marked"
 
 class App extends Component {
   state = {
@@ -9,8 +10,12 @@ class App extends Component {
 
   handleChange = (event) => {
     this.setState({
-      text: event.target.value
+      text: event.target.value,
     })
+  }
+
+  renderText = (text) => {
+    return marked(text, { sanitize: true })
   }
 
   render() {
@@ -26,7 +31,13 @@ class App extends Component {
               rows="35"
             ></textarea>
           </div>
-          <div className="col-sm-6">{text}</div>
+          <div className="col-sm-6">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: this.renderText(this.state.text),
+              }}
+            ></div>
+          </div>
         </div>
       </div>
     )
