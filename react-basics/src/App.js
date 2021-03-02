@@ -60,19 +60,23 @@ class App extends Component {
     const { titre } = this.props
     const { famille, number, show } = this.state
     let description = this.getDescription()
+    const liste = Object.keys(famille).map((membre) => (
+      <Membre age={famille[membre].age} nom={famille[membre].nom} />
+    ))
+
+    console.log(liste)
+
     return (
       <div className="App">
         <h1>{titre}</h1>
         <input value={number} onChange={this.handleChange} type="text"></input>
-        <Membre age={famille.membre1.age} nom={famille.membre1.nom} />
-        <Membre age={famille.membre2.age} nom={famille.membre2.nom} />
-        <Membre age={famille.membre3.age} nom={famille.membre3.nom} />
-        <Membre age={famille.membre4.age} nom={famille.membre4.nom}>
+        {liste}
+        {/*<Membre age={famille.membre4.age} nom={famille.membre4.nom}>
           {description}
           <button onClick={this.handleShowDescription}>
             {show ? "Cacher" : "Montrer"}
           </button>
-        </Membre>
+      </Membre> */}
         <Button
           number={number}
           vieillir={() => this.handleClick(number)}
