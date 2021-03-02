@@ -16,7 +16,7 @@ class Formulaire extends Component {
     addMessage(message)
     this.setState({
       message: "",
-      length
+      length,
     })
   }
 
@@ -33,12 +33,19 @@ class Formulaire extends Component {
     })
   }
 
+  handleKeyUp = (event) => {
+    if (event.key === "Enter") {
+      this.createMessage()
+    }
+  }
+
   render() {
     return (
       <form className="form" onSubmit={this.handleSubmit}>
         <textarea
           value={this.state.message}
           onChange={this.handleChange}
+          onKeyUp={this.handleKeyUp}
           required
           maxLength="140"
         ></textarea>
