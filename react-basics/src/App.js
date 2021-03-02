@@ -64,12 +64,26 @@ class App extends Component {
     })
   }
 
+  changerNom = (id, event) => {
+    const famille = { ...this.state.famille }
+    famille[id].nom = event.target.value
+    this.setState({
+      famille,
+    })
+  }
+
   render() {
     const { titre } = this.props
     const { famille, number, show } = this.state
     let description = this.getDescription()
     const liste = Object.keys(famille).map((membre) => (
-      <Membre key={membre} cacherNom ={() => this.cacherNom(membre)} age={famille[membre].age} nom={famille[membre].nom} />
+      <Membre
+        key={membre}
+        changerNom={(e) => this.changerNom(membre, e)}
+        cacherNom={() => this.cacherNom(membre)}
+        age={famille[membre].age}
+        nom={famille[membre].nom}
+      />
     ))
 
     console.log(liste)
