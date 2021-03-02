@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import "./index.css"
 import App from "./App"
 import Connexion from "./components/Connexion"
+import NotFound from "./components/NotFound"
 import reportWebVitals from "./reportWebVitals"
 
 import { BrowserRouter, Route, Switch } from "react-router-dom"
@@ -11,6 +12,7 @@ const Root = () => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/"  component={Connexion}></Route>
+      <Route  component={NotFound}></Route>
     </Switch>
   </BrowserRouter>
 )
