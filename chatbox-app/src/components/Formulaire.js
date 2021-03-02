@@ -3,10 +3,11 @@ import { Component } from "react"
 class Formulaire extends Component {
   state = {
     message: "",
+    length: this.props.length,
   }
 
   createMessage = () => {
-    const { addMessage, pseudo } = this.props
+    const { addMessage, pseudo, length } = this.props
     const message = {
       pseudo,
       message: this.state.message,
@@ -15,6 +16,7 @@ class Formulaire extends Component {
     addMessage(message)
     this.setState({
       message: "",
+      length
     })
   }
 
@@ -24,8 +26,10 @@ class Formulaire extends Component {
   }
 
   handleChange = (event) => {
+    const value = event.target.value
     this.setState({
-      message: event.target.value,
+      message: value,
+      length: this.props.length - value.length,
     })
   }
 
@@ -38,7 +42,7 @@ class Formulaire extends Component {
           required
           maxLength="140"
         ></textarea>
-        <div className="info">140</div>
+        <div className="info">{this.state.length}</div>
         <button type="submit">Envoyer!</button>
       </form>
     )
