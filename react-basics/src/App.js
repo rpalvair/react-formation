@@ -49,9 +49,17 @@ class App extends Component {
     })
   }
 
+  getDescription = () => {
+    if (this.state.show) {
+      return "Je suis la plus grande"
+    }
+    return null
+  }
+
   render() {
     const { titre } = this.props
     const { famille, number, show } = this.state
+    let description = this.getDescription()
     return (
       <div className="App">
         <h1>{titre}</h1>
@@ -60,7 +68,7 @@ class App extends Component {
         <Membre age={famille.membre2.age} nom={famille.membre2.nom} />
         <Membre age={famille.membre3.age} nom={famille.membre3.nom} />
         <Membre age={famille.membre4.age} nom={famille.membre4.nom}>
-          {show ? "Je suis la plus grande" : null}
+          {description}
           <button onClick={this.handleShowDescription}>
             {show ? "Cacher" : "Montrer"}
           </button>
