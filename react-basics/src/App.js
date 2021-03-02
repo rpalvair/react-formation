@@ -25,6 +25,7 @@ class App extends Component {
   state = {
     famille,
     number: 2,
+    show: false,
   }
 
   handleClick = (number) => {
@@ -36,15 +37,21 @@ class App extends Component {
   }
 
   handleChange = (event) => {
-    const value = Number(event.target.value) 
+    const value = Number(event.target.value)
     this.setState({
-      number : value,
+      number: value,
+    })
+  }
+
+  handleShowDescription = () => {
+    this.setState({
+      show: !this.state.show,
     })
   }
 
   render() {
     const { titre } = this.props
-    const { famille, number } = this.state
+    const { famille, number, show } = this.state
     return (
       <div className="App">
         <h1>{titre}</h1>
@@ -53,7 +60,10 @@ class App extends Component {
         <Membre age={famille.membre2.age} nom={famille.membre2.nom} />
         <Membre age={famille.membre3.age} nom={famille.membre3.nom} />
         <Membre age={famille.membre4.age} nom={famille.membre4.nom}>
-          Je suis la plus grande
+          {show ? "Je suis la plus grande" : null}
+          <button onClick={this.handleShowDescription}>
+            {show ? "Cacher" : "Montrer"}
+          </button>
         </Membre>
         <Button
           number={number}
