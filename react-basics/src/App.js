@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 import "./App.css"
 import Button from "./components/Button"
 import Membre from "./components/Membre"
@@ -49,9 +49,20 @@ class App extends Component {
     })
   }
 
-  getDescription = () => {
-    if (this.state.show) {
+  getDescription = (membre) => {
+    if (this.state.show && membre === "membre4") {
       return "Je suis la plus grande"
+    }
+    return null
+  }
+
+  getButton = (membre) => {
+    if (membre === "membre4") {
+      return (
+        <button onClick={this.handleShowDescription}>
+          {this.state.show ? "Cacher" : "Montrer"}
+        </button>
+      )
     }
     return null
   }
@@ -74,8 +85,7 @@ class App extends Component {
 
   render() {
     const { titre } = this.props
-    const { famille, number, show } = this.state
-    let description = this.getDescription()
+    const { famille, number } = this.state
     const liste = Object.keys(famille).map((membre) => (
       <Membre
         key={membre}
@@ -83,7 +93,20 @@ class App extends Component {
         cacherNom={() => this.cacherNom(membre)}
         age={famille[membre].age}
         nom={famille[membre].nom}
-      />
+      >
+        {membre === "membre4" ? (
+          <Fragment>
+            {this.state.show ? "Je suis la plus grande" : null}
+            <button onClick={this.handleShowDescription}>
+              {this.state.show ? "Cacher" : "Montrer"}
+            </button>
+          </Fragment>
+        ) : null}
+        {/*
+        {this.getDescription(membre)}
+        {this.getButton(membre)}
+          */}
+      </Membre>
     ))
 
     console.log(liste)
@@ -93,12 +116,6 @@ class App extends Component {
         <h1>{titre}</h1>
         <input value={number} onChange={this.handleChange} type="text"></input>
         {liste}
-        {/*<Membre age={famille.membre4.age} nom={famille.membre4.nom}>
-          {description}
-          <button onClick={this.handleShowDescription}>
-            {show ? "Cacher" : "Montrer"}
-          </button>
-      </Membre> */}
         <Button
           number={number}
           vieillir={() => this.handleClick(number)}
