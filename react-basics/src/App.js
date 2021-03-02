@@ -69,7 +69,7 @@ class App extends Component {
     const { famille, number, show } = this.state
     let description = this.getDescription()
     const liste = Object.keys(famille).map((membre) => (
-      <Membre cacherNom ={() => this.cacherNom(membre)} age={famille[membre].age} nom={famille[membre].nom} />
+      <Membre key={membre} cacherNom ={() => this.cacherNom(membre)} age={famille[membre].age} nom={famille[membre].nom} />
     ))
 
     console.log(liste)
