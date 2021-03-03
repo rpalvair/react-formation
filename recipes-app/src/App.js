@@ -1,4 +1,4 @@
-import { Component } from "react"
+import React, { Component } from "react"
 import "./App.css"
 import Admin from "./components/Admin"
 import Header from "./components/Header"
