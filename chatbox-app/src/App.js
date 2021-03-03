@@ -12,7 +12,7 @@ class App extends Component {
   componentDidMount = () => {
     base.syncState("/", {
       context: this,
-      state: "messages"
+      state: "messages",
     })
   }
 
@@ -28,14 +28,24 @@ class App extends Component {
     const messages = { ...this.state.messages }
     const list = Object.keys(messages).map((key) => {
       const message = messages[key]
-      return <Message key={key} message={message.message} pseudo={message.pseudo}></Message>
+      return (
+        <Message
+          key={key}
+          message={message.message}
+          pseudo={message.pseudo}
+        ></Message>
+      )
     })
 
     console.log(list)
 
     return (
       <div className="box">
-        <div>{list}</div>
+        <div>
+          <div className="messages">
+            <div className="message">{list}</div>
+          </div>
+        </div>
         <Formulaire
           length={140}
           pseudo={this.state.pseudo}
