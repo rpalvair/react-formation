@@ -20,9 +20,7 @@ class App extends Component {
   render() {
     const recettes = { ...this.state.recettes }
     const list = Object.keys(recettes).map((key) => {
-      return (
-        <Card details={recettes[key]}></Card>
-      )
+      return <Card key={key} details={recettes[key]}></Card>
     })
 
     return (
