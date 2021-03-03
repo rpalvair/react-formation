@@ -3,6 +3,7 @@ import "./App.css"
 import Admin from "./components/Admin"
 import Header from "./components/Header"
 import recettes from "./recettes"
+import Card from "./components/Card"
 
 class App extends Component {
   state = {
@@ -17,14 +18,17 @@ class App extends Component {
   }
 
   render() {
+    const recettes = { ...this.state.recettes }
+    const list = Object.keys(recettes).map((key) => {
+      return (
+        <Card details={recettes[key]}></Card>
+      )
+    })
+
     return (
       <div className="box">
         <Header pseudo={this.state.pseudo}></Header>
-        <div className="cards">
-          <div className="card">
-            <h2>Une carte</h2>
-          </div>
-        </div>
+        <div className="cards">{list}</div>
         <Admin chargerExemple={this.chargerExemple}></Admin>
       </div>
     )
