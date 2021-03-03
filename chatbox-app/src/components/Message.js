@@ -1,6 +1,10 @@
-
-const Message = ({ message, pseudo }) => {
-  return <p className="user-message">{message ? message : "Mon Message"}</p>
+const Message = ({ message, pseudo, sameUser }) => {
+  return (
+    <p className={sameUser ? "user-message" : "not-user-message"}>
+      {!sameUser ? <strong>{pseudo} : </strong> : null}
+      {message ? message : "Mon Message"}
+    </p>
+  )
 }
 
 export default Message

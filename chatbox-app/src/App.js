@@ -34,6 +34,10 @@ class App extends Component {
     })
   }
 
+  isSameUser = (message) => {
+    return message.pseudo === this.state.pseudo
+  }
+
   render() {
     const messages = { ...this.state.messages }
     const list = Object.keys(messages).map((key) => {
@@ -43,6 +47,7 @@ class App extends Component {
           key={key}
           message={message.message}
           pseudo={message.pseudo}
+          sameUser={this.isSameUser(message)}
         ></Message>
       )
     })
