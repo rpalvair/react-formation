@@ -46,6 +46,15 @@ class App extends Component {
     })
   }
 
+  supprimerRecette = (key) => {
+    console.log("recette a supprimer", key)
+    const recettes = { ...this.state.recettes }
+    recettes[key] = null
+    this.setState({
+      recettes,
+    })
+  }
+
   render() {
     const recettes = { ...this.state.recettes }
     const list = Object.keys(recettes).map((key) => {
@@ -61,6 +70,7 @@ class App extends Component {
           ajouterRecette={this.ajouterRecette}
           modifierRecette={this.modifierRecette}
           chargerExemple={this.chargerExemple}
+          supprimerRecette={this.supprimerRecette}
         ></Admin>
       </div>
     )

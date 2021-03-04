@@ -45,7 +45,9 @@ class AdminForm extends Component {
             placeholder="Liste des instructions"
           />
         </form>
-        <button>Supprimer</button>
+        <button onClick={() => this.props.supprimerRecette(key)}>
+          Supprimer
+        </button>
       </div>
     )
   }

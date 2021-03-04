@@ -9,6 +9,7 @@ class Admin extends Component {
       ajouterRecette,
       modifierRecette,
       chargerExemple,
+      supprimerRecette
     } = this.props
 
     return (
@@ -19,6 +20,7 @@ class Admin extends Component {
             key={key}
             id={key}
             modifierRecette={modifierRecette}
+            supprimerRecette={supprimerRecette}
             recettes={recettes}
           ></AdminForm>
         ))}
