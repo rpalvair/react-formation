@@ -48,18 +48,26 @@ class Admin extends Component {
       return <Login authenticate={this.authenticate} />
     }
 
+    if(this.state.connectedUid !== this.state.ownerUid) {
+        return (
+            <div>
+                <p> Tu n'es pas le chef de cette boîte!</p>
+            </div>
+        )
+    }
+
     return (
       <div className="cards">
         <AjouterRecette ajouterRecette={ajouterRecette}></AjouterRecette>
         {Object.keys(recettes).map((key) => (
-          <AdminForm
-            key={key}
-            id={key}
-            modifierRecette={modifierRecette}
-            supprimerRecette={supprimerRecette}
-            recettes={recettes}
-          ></AdminForm>
-        ))}
+              <AdminForm
+                key={key}
+                id={key}
+                modifierRecette={modifierRecette}
+                supprimerRecette={supprimerRecette}
+                recettes={recettes}
+              ></AdminForm>
+            ))}
         <footer>
           <button onClick={chargerExemple}>Remplir</button>
         </footer>
