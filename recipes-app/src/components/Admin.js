@@ -35,6 +35,13 @@ class Admin extends Component {
     })
   }
 
+  logout = async () => {
+    await firebaseApp.auth().signOut()
+    this.setState({
+      connectedUid: null,
+    })
+  }
+
   render() {
     const {
       recettes,
@@ -44,31 +51,35 @@ class Admin extends Component {
       supprimerRecette,
     } = this.props
 
+    const logout = <button onClick={this.logout}>Déconnexion</button>
+
     if (!this.state.connectedUid) {
       return <Login authenticate={this.authenticate} />
     }
 
-    if(this.state.connectedUid !== this.state.ownerUid) {
-        return (
-            <div>
-                <p> Tu n'es pas le chef de cette boîte!</p>
-            </div>
-        )
+    if (this.state.connectedUid !== this.state.ownerUid) {
+      return (
+        <div>
+          <p> Tu n'es pas le chef de cette boîte!</p>
+          {logout}
+        </div>
+      )
     }
 
     return (
       <div className="cards">
         <AjouterRecette ajouterRecette={ajouterRecette}></AjouterRecette>
         {Object.keys(recettes).map((key) => (
-              <AdminForm
-                key={key}
-                id={key}
-                modifierRecette={modifierRecette}
-                supprimerRecette={supprimerRecette}
-                recettes={recettes}
-              ></AdminForm>
-            ))}
+          <AdminForm
+            key={key}
+            id={key}
+            modifierRecette={modifierRecette}
+            supprimerRecette={supprimerRecette}
+            recettes={recettes}
+          ></AdminForm>
+        ))}
         <footer>
+          {logout}
           <button onClick={chargerExemple}>Remplir</button>
         </footer>
       </div>
