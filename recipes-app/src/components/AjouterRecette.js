@@ -1,12 +1,14 @@
 import React, { Component } from "react"
 
 class AjouterRecette extends Component {
-  state = {
+  initialState = {
     nom: "",
     image: "",
     ingredients: "",
     instructions: "",
   }
+
+  state = this.initialState
 
   handleChange = (event) => {
     const { name, value } = event.target
@@ -15,10 +17,22 @@ class AjouterRecette extends Component {
     })
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault()
+    console.log("submit")
+    const recette = { ...this.state }
+    console.log("recette", recette)
+    this.props.ajouterRecette(recette)
+    this.setState(() => this.initialState)
+  }
+
   render() {
     return (
       <div className="card">
-        <form className="admin-form ajouter-recette">
+        <form
+          className="admin-form ajouter-recette"
+          onSubmit={this.handleSubmit}
+        >
           <input
             value={this.state.nom}
             name="nom"
@@ -47,6 +61,7 @@ class AjouterRecette extends Component {
             placeholder="Liste des instructions"
             onChange={this.handleChange}
           ></textarea>
+          <button type="submit">Ajouter une recette</button>
         </form>
       </div>
     )
