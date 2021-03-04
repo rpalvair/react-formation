@@ -1,16 +1,40 @@
 import React, { Component } from "react"
 import AjouterRecette from "./AjouterRecette"
 import AdminForm from "./AdminForm"
+import firebase from "firebase/app"
+import "firebase/auth"
+import base, { firebaseApp } from "../base"
+import Login from "./Login"
 
 class Admin extends Component {
+  state = {
+    connectedUid: null,
+    ownerUid: null,
+  }
+
+  authenticate = () => {
+    firebaseApp.auth()
+    .signInWithPopup(new firebase.auth.FacebookAuthProvider())
+    .then(this.handleAuth)
+
+  }
+
+  handleAuth = (authData) => {
+    console.log("authData",authData)
+  }
+
   render() {
     const {
       recettes,
       ajouterRecette,
       modifierRecette,
       chargerExemple,
-      supprimerRecette
+      supprimerRecette,
     } = this.props
+
+    if(!this.state.connectedUid) {
+        return <Login authenticate={this.authenticate} />
+    }
 
     return (
       <div className="cards">
