@@ -28,6 +28,11 @@ class Admin extends Component {
         data: authData.user.uid,
       })
     }
+
+    this.setState({
+      connectedUid: authData.user.uid,
+      ownerUid: box.owner || authData.user.uid,
+    })
   }
 
   render() {
