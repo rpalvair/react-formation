@@ -13,14 +13,21 @@ class Admin extends Component {
   }
 
   authenticate = () => {
-    firebaseApp.auth()
-    .signInWithPopup(new firebase.auth.FacebookAuthProvider())
-    .then(this.handleAuth)
-
+    firebaseApp
+      .auth()
+      .signInWithPopup(new firebase.auth.FacebookAuthProvider())
+      .then(this.handleAuth)
   }
 
-  handleAuth = (authData) => {
-    console.log("authData",authData)
+  handleAuth = async (authData) => {
+    console.log("authData", authData)
+    const box = await base.fetch(this.props.pseudo, { context: this })
+
+    if (!box.owner) {
+      await base.post(`${this.props.pseudo}/owner`, {
+        data: authData.user.uid,
+      })
+    }
   }
 
   render() {
@@ -32,8 +39,8 @@ class Admin extends Component {
       supprimerRecette,
     } = this.props
 
-    if(!this.state.connectedUid) {
-        return <Login authenticate={this.authenticate} />
+    if (!this.state.connectedUid) {
+      return <Login authenticate={this.authenticate} />
     }
 
     return (

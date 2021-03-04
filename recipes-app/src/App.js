@@ -71,6 +71,7 @@ class App extends Component {
           modifierRecette={this.modifierRecette}
           chargerExemple={this.chargerExemple}
           supprimerRecette={this.supprimerRecette}
+          pseudo={this.state.pseudo}
         ></Admin>
       </div>
     )
