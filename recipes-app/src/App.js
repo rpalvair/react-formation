@@ -37,6 +37,15 @@ class App extends Component {
     })
   }
 
+  modifierRecette = (key, recette) => {
+    console.log("recette a modifier", key, recette)
+    const recettes = { ...this.state.recettes }
+    recettes[key] = recette
+    this.setState({
+      recettes,
+    })
+  }
+
   render() {
     const recettes = { ...this.state.recettes }
     const list = Object.keys(recettes).map((key) => {
@@ -48,7 +57,9 @@ class App extends Component {
         <Header pseudo={this.state.pseudo}></Header>
         <div className="cards">{list}</div>
         <Admin
+          recettes={this.state.recettes}
           ajouterRecette={this.ajouterRecette}
+          modifierRecette={this.modifierRecette}
           chargerExemple={this.chargerExemple}
         ></Admin>
       </div>
