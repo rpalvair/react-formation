@@ -12,6 +12,19 @@ class Admin extends Component {
     ownerUid: null,
   }
 
+
+  componentDidMount = () => {
+    firebaseApp
+    .auth()
+    .onAuthStateChanged(user => {
+        if(user) {
+            console.log("user",user)
+            this.handleAuth({user})
+        }
+    })
+  }
+
+
   authenticate = () => {
     firebaseApp
       .auth()
@@ -23,15 +36,16 @@ class Admin extends Component {
     console.log("authData", authData)
     const box = await base.fetch(this.props.pseudo, { context: this })
 
-    if (!box.owner) {
-      await base.post(`${this.props.pseudo}/owner`, {
-        data: authData.user.uid,
-      })
-    }
+    //FIXME: only at user creation
+    // if (!box.owner) {
+    //   await base.post(`${this.props.pseudo}/owner`, {
+    //     data: authData.user.uid,
+    //   })
+    // }
 
     this.setState({
       connectedUid: authData.user.uid,
-      ownerUid: box.owner || authData.user.uid,
+      ownerUid: box.owner,
     })
   }
 
