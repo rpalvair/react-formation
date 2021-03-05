@@ -5,6 +5,7 @@ import Admin from "./components/Admin"
 import Card from "./components/Card"
 import Header from "./components/Header"
 import withFirebase from "./hoc/withFirebase"
+import ColorProvider from "./components/Color"
 class App extends Component {
   render() {
     const recettes = { ...this.props.recettes }
@@ -14,7 +15,9 @@ class App extends Component {
 
     return (
       <div className="box">
-        <Header pseudo={this.props.pseudo}></Header>
+        <ColorProvider>
+          <Header pseudo={this.props.pseudo}></Header>
+        </ColorProvider>
         <div className="cards">{list}</div>
         <Admin
           recettes={this.props.recettes}
