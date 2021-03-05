@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Redirect } from "react-router-dom"
+import withPlaceHolder from "../hoc/hocWithPlaceholder"
 
 class Connexion extends Component {
   state = {
@@ -31,7 +32,7 @@ class Connexion extends Component {
           <input
             value={this.state.pseudo}
             onChange={this.handleChange}
-            placeholder="Nom du chef"
+            placeholder={this.props.placeholder}
             type="text"
             pattern="[A-Za-z-]{1,}"
             required
@@ -44,4 +45,6 @@ class Connexion extends Component {
   }
 }
 
-export default Connexion
+const WrappedComponent = withPlaceHolder(Connexion)
+
+export default WrappedComponent
