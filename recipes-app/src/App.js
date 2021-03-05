@@ -1,10 +1,9 @@
+import PropTypes from "prop-types"
 import React, { Component } from "react"
 import "./App.css"
 import Admin from "./components/Admin"
-import Header from "./components/Header"
-import recettes from "./recettes"
 import Card from "./components/Card"
-import base from "./base"
+import Header from "./components/Header"
 import withFirebase from "./hoc/withFirebase"
 class App extends Component {
   render() {
@@ -28,6 +27,10 @@ class App extends Component {
       </div>
     )
   }
+}
+
+App.propTypes = {
+  recettes: PropTypes.object.isRequired,
 }
 
 const WrappedComponent = withFirebase(App)
