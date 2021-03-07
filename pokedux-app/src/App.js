@@ -2,12 +2,20 @@ import "./App.css"
 import React from "react"
 import GameBoy from "./components/GameBoy"
 import PokeList from "./components/PokeList"
+import { connect } from "react-redux"
 
-const App = () => (
+const App = ({ click }) => (
   <div className="App">
+    {click}
     <GameBoy />
     <PokeList />
   </div>
 )
 
-export default App
+const mapStateToProps = ({ click }) => {
+  return {
+    click,
+  }
+}
+
+export default connect(mapStateToProps)(App)
