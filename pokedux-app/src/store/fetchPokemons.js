@@ -27,7 +27,7 @@ function buildPokemon(pokemon) {
     name: pokemon.name,
     captureRate: pokemon.capture_rate,
     isCatch: false,
-    img: `https://raw.githunusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`,
+    img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`,
   }
 }
 
