@@ -1,8 +1,14 @@
 import React from "react"
 import { connect } from "react-redux"
+import fetchPokemons from "../store/fetchPokemons"
 
-const Screen = ({ onScreen }) => {
+const Screen = ({ onScreen, pokemons }) => {
   if (onScreen.id) {
+    if (pokemons[onScreen.id - 1].isCatch) {
+      return (
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"></img>
+      )
+    }
     return (
       <>
         <h3>{onScreen.name}</h3>
@@ -19,9 +25,10 @@ const Screen = ({ onScreen }) => {
   )
 }
 
-const mapStateToProps = ({ onScreen }) => {
+const mapStateToProps = ({ onScreen, pokemons }) => {
   return {
     onScreen,
+    pokemons,
   }
 }
 

@@ -41,9 +41,15 @@ const reducer = (state = initialState, action) => {
         pokemons: state.pokemons.map((pokemon) => {
           if (pokemon.id === state.onScreen.id) {
             const rate = pokemon.captureRate + action.random
+            console.log("rate ", rate)
             if (rate >= 255) {
               console.log("pokemon caught!!!", pokemon.name)
-              return { ...pokemon, isCatch: true }
+              return {
+                ...pokemon,
+                isCatch: true,
+                img:
+                  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png",
+              }
             }
           }
           return pokemon
