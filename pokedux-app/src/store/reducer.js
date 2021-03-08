@@ -1,5 +1,10 @@
 import initialState from "./initialState"
-import { CLICK, FETCH_POKEMON_PENDING, FETCH_POKEMON_SUCCESS } from "./actions"
+import {
+  CLICK,
+  FETCH_POKEMON_PENDING,
+  FETCH_POKEMON_SUCCESS,
+  SHOW_POKEMON,
+} from "./actions"
 
 const reducer = (state = initialState, action) => {
   console.log("call reducer", state)
@@ -14,13 +19,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         pokemons: action.pokemons,
-        pending: false
+        pending: false,
       }
     case FETCH_POKEMON_PENDING:
       console.log("pending")
       return {
         ...state,
         pending: true,
+      }
+    case SHOW_POKEMON:
+      console.log("show pokemon", action.onScreen)
+      return {
+        ...state,
+        onScreen: action.onScreen,
       }
     default:
       return state
