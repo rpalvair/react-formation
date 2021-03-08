@@ -12,7 +12,10 @@ export const fetch_pokemon_pending = (pokemons) => ({
   type: FETCH_POKEMON_PENDING,
 })
 
-export const show_pokemon_action = (pokemons) => ({
-  type: SHOW_POKEMON,
-  onScreen: pokemons[Math.floor(Math.random() * 10)],
-})
+export const show_pokemon_action = (pokemons) => {
+  const pokemonsFree = pokemons.filter((pok) => !pok.isCatch)
+  const onScreen = pokemonsFree[Math.floor(Math.random() * pokemonsFree.length)]
+  return (dispatch) => {
+    dispatch({ type: SHOW_POKEMON, onScreen })
+  }
+}
