@@ -1,11 +1,9 @@
 import React from "react"
 
-const PokemonItem = () => (
+const PokemonItem = ({ pokemon }) => (
   <li className="pokemon-item">
-    <img
-     alt={"ditto"}
-     src={"https://raw.githunusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"}></img>
-     ditto
+    <img alt={pokemon.name} src={pokemon.img} />
+    {pokemon.name}
   </li>
 )
 
