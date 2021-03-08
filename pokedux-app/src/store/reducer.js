@@ -4,6 +4,7 @@ import {
   FETCH_POKEMON_PENDING,
   FETCH_POKEMON_SUCCESS,
   SHOW_POKEMON,
+  CATCH_POKEMON,
 } from "./actions"
 
 const reducer = (state = initialState, action) => {
@@ -32,6 +33,21 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         onScreen: action.onScreen,
+      }
+    case CATCH_POKEMON:
+      console.log("catch pokemon", action.random)
+      return {
+        ...state,
+        pokemons: state.pokemons.map((pokemon) => {
+          if (pokemon.id === state.onScreen.id) {
+            const rate = pokemon.captureRate + action.random
+            if (rate >= 255) {
+              console.log("pokemon caught!!!", pokemon.name)
+              return { ...pokemon, isCatch: true }
+            }
+          }
+          return pokemon
+        }),
       }
     default:
       return state
