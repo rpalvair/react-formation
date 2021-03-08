@@ -61,10 +61,10 @@ const GameBoy = ({showPokemon}) => {
             </div>
           </div>
           <div className="bottom-box">
-            <div className="pill-button button-select">
+            <div className="pill-button button-select" onClick={() => showPokemon()}>
               <label className="select">SELECT</label>
             </div>
-            <div className="pill-button button-start">
+            <div className="pill-button button-start" onClick={() => showPokemon()}>
               <label className="start">START</label>
             </div>
             <div className="speaker">
