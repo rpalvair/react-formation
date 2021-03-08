@@ -1,4 +1,4 @@
-import { fetch_pokemon_success } from "./actions"
+import { fetch_pokemon_pending, fetch_pokemon_success } from "./actions"
 
 const numberOfPokemons = 10
 
@@ -33,6 +33,7 @@ function buildPokemon(pokemon) {
 
 export default () => {
   return (dispath) => {
+    dispath(fetch_pokemon_pending())
     Promise.all(requests)
       .then((responses) => {
         console.log("responses", responses)

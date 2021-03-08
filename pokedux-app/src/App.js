@@ -7,10 +7,14 @@ import { CLICK, FETCH_POKEMON_SUCCESS } from "./store/actions"
 import fetchPokemons from "./store/fetchPokemons"
 import "./styles.css"
 
-const App = ({ handleClick, fetchPokemons }) => {
+const App = ({ handleClick, fetchPokemons, pending }) => {
   useEffect(() => {
     fetchPokemons()
   }, [fetchPokemons])
+
+  if(pending) {
+    return <p>Chargement...</p>
+  }
 
   return (
     <div className="App">
@@ -21,6 +25,12 @@ const App = ({ handleClick, fetchPokemons }) => {
   )
 }
 
+const mapStateToProps = ({ pending }) => {
+  return {
+    pending,
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchPokemons: () => dispatch(fetchPokemons()),
@@ -28,4 +38,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

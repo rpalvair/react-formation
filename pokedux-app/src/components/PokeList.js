@@ -2,7 +2,7 @@ import React from "react"
 import PokemonItem from "./PokemonItem"
 import { connect } from "react-redux"
 
-const PokeList = ({ click, pokemons }) => (
+const PokeList = ({ click, pokemons, pending }) => (
   <div className="list-container">
     <h2>Try : {click}</h2>
     <h2>
@@ -16,10 +16,11 @@ const PokeList = ({ click, pokemons }) => (
   </div>
 )
 
-const mapStateToProps = ({ click, pokemons }) => {
+const mapStateToProps = ({ click, pokemons, pending }) => {
   return {
     click,
     pokemons,
+    pending,
   }
 }
 
