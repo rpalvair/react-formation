@@ -3,7 +3,12 @@ import { connect } from "react-redux"
 
 const Screen = ({ onScreen }) => {
   if (onScreen.id) {
-    return <h1>{onScreen.name}</h1>
+    return (
+      <>
+        <h3>{onScreen.name}</h3>
+        <img alt={onScreen.name} src={onScreen.img} />
+      </>
+    )
   }
   return (
     <>
