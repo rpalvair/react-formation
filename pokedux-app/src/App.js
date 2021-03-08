@@ -5,6 +5,7 @@ import PokeList from "./components/PokeList"
 import { connect } from "react-redux"
 import { CLICK, FETCH_POKEMON_SUCCESS } from "./store/actions"
 import fetchPokemons from "./store/fetchPokemons"
+import "./styles.css"
 
 const App = ({ handleClick, fetchPokemons }) => {
   useEffect(() => {
