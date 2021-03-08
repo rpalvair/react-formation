@@ -4,11 +4,12 @@ import GameBoy from "./components/GameBoy"
 import PokeList from "./components/PokeList"
 import { connect } from "react-redux"
 import { CLICK } from "./store/actions"
+import Counter from "./components/Counter"
 
-const App = ({ click, handleClick }) => (
+const App = ({ handleClick }) => (
   <div className="App">
-    {click}
     <button onClick={() => handleClick()}>click</button>
+    <Counter/>
     <GameBoy />
     <PokeList />
   </div>
