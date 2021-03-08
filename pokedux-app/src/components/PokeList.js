@@ -5,7 +5,9 @@ import { connect } from "react-redux"
 const PokeList = ({ click, pokemons }) => (
   <div className="list-container">
     <h2>Try : {click}</h2>
-    <h2>Pokedex</h2>
+    <h2>
+      {pokemons.filter((pokemon) => pokemon.isCatch).length} / {pokemons.length}
+    </h2>
     <ul>
       {pokemons.map((pokemon) => (
         <PokemonItem key={pokemon.id} pokemon={pokemon} />
