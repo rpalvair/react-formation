@@ -6,6 +6,7 @@ import { connect } from "react-redux"
 import { CLICK, FETCH_POKEMON_SUCCESS } from "./store/actions"
 import fetchPokemons from "./store/fetchPokemons"
 import "./styles.css"
+import Loader from "./components/Loader"
 
 const App = ({ handleClick, fetchPokemons, pending }) => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const App = ({ handleClick, fetchPokemons, pending }) => {
   }, [fetchPokemons])
 
   if(pending) {
-    return <p>Chargement...</p>
+    return <Loader></Loader>
   }
 
   return (
