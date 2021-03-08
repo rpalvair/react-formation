@@ -1,9 +1,10 @@
 import React from "react"
 import PokemonItem from "./PokemonItem"
+import { connect } from "react-redux"
 
-const PokeList = () => (
+const PokeList = ({ click }) => (
   <div className="list-container">
-    <h2>Try : 0</h2>
+    <h2>Try : {click}</h2>
     <h2>Pokedex</h2>
     <ul>
       <PokemonItem />
@@ -13,4 +14,10 @@ const PokeList = () => (
   </div>
 )
 
-export default PokeList
+const mapStateToProps = ({ click }) => {
+  return {
+    click,
+  }
+}
+
+export default connect(mapStateToProps)(PokeList)
